@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MainDiv from './mainDiv'
-import FavouriteDiv from './favDiv'
-import './styles/app.css'
-import Header from './components/Header'
+import MainDiv from './mainDiv';
+import FavouriteDiv from './favDiv';
+import './styles/app.css';
+import Header from './components/Header';
 import { initWeather } from './actions/city';
 import { initFavs } from './actions/favourites';
 
