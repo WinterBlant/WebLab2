@@ -1,0 +1,43 @@
+.Main{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 500px;
+    margin: auto;
+}
+
+@media (min-width: 700px) {
+    .Main{
+        flex-direction: row;
+        height: 250px;
+    }
+}
+
+.currentCity{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.currentCity h1 {
+    text-align: left;
+    color: #7d7d7d;
+}
+
+.additionalInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.additionalInfo h1{
+    font-size: 120px;
+    margin: 0;
+}
+.weatherImage{
+    width: 120px;
+    height: 120px;
+}
