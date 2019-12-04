@@ -26,7 +26,7 @@ export default function favouriteReducer(state = initialState, action) {
             }
             return {
                 ...state,
-                isLoading: curLoad,
+                isLoading: curLoad
             };
         }
         case types.UPDATE_FAV: {
@@ -47,7 +47,6 @@ export default function favouriteReducer(state = initialState, action) {
             };
         }
         case types.LOAD_ERROR: {
-            console.log(action.payload.name);
             const name = action.payload.name;
             const errors = [...state.errors];
             if (!errors.includes(name)) {

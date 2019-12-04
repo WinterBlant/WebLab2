@@ -26,7 +26,6 @@
 .searchButton {
     height: 32px;
     width: 32px;
-    border-radius: 50%;
     font-size: 16px;
     line-height: 17.6px;
     background: darkgray;
@@ -50,7 +49,6 @@
 .deleteButton {
     height: 32px;
     width: 32px;
-    border-radius: 50%;
     font-size: 16px;
     line-height: 17.6px;
     background: darkgray;

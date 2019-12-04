@@ -1,5 +1,5 @@
 let APIkey = '28b4ff63e143043a4cf62a826e7449ea';
-const $ = window.$;
+const axios = require('axios');
 
 export default class Service {
     static async getWeather() {
@@ -25,61 +25,46 @@ export default class Service {
     }
 
     static async getWeatherByName(name) {
-        var result = '';
-        $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/weather',
-            dataType: 'json',
-            data: {
-                q: name,
-                appid: APIkey
-            },
-            async: false
-        })
-            .done(
-                function (data) {
-                    result = data;
-                    result.cod = 200;
+        try {
+            const response = await axios({
+                url: 'https://api.openweathermap.org/data/2.5/weather',
+                responseType: 'json',
+                method: 'get',
+                params: {
+                    q: name,
+                    appid: APIkey
                 }
-            )
-            .fail(
-                function (data) {
-                    result = data;
-                }
-            )
-        return await this.parseWeather(result);
+            })
+            return await this.parseWeather(response.data, response.status);
+        } catch (error) {
+            return await this.parseWeather('', error.response.status)
+        }
     }
 
     static async getWeatherByCoords(coords) {
-        var result = '';
-        $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/weather',
-            dataType: 'json',
-            data: {
-                lat: coords.lat,
-                lon: coords.lon,
-                appid: APIkey
-            },
-            async: false
-        })
-            .done(
-                function (data) {
-                    result = data;
-                    result.cod = 200;
+        try {
+            const response = await axios({
+                url: 'https://api.openweathermap.org/data/2.5/weather',
+                responseType: 'json',
+                method: 'get',
+                params: {
+                    lat: coords.lat,
+                    lon: coords.lon,
+                    appid: APIkey
                 }
-            )
-            .fail(
-                function (err) {
-                    result = err.status;
-                }
-            )
-        return await this.parseWeather(result);
+            })
+            console.log(response);
+            return await this.parseWeather(response.data, response.status);
+        } catch (error) {
+            return await this.parseWeather('', error.response.status)
+        }
     }
 
-    static async parseWeather(data) {
-        if (data.cod !== 200) {
+    static async parseWeather(data, status) {
+        if (status !== 200) {
             return ({
                 city: '',
-                error: data.status
+                error: status
             })
         }
         return ({

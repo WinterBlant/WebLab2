@@ -8,8 +8,10 @@ class FavouriteDiv extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addCity({ name: e.target.cityName.value });
-        e.target[0].value = '';
+        const city = e.target.cityName.value;
+        e.target.cityName.value = 'Adding city...';
+        this.props.addCity({ name: city });
+        e.target.cityName.value = '';
     };
 
     handleRemove = (name) => {
