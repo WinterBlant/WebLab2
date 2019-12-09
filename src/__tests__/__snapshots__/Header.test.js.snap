@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component matches the snapshot 1`] = `
+<header
+  className="App-header"
+>
+  <h1
+    className="App-title"
+    style={
+      Object {
+        "color": "#859296",
+      }
+    }
+  >
+    Погода здесь
+  </h1>
+  <button
+    className="Refresh-Location-Button"
+  >
+    Обновить геолокацию
+  </button>
+</header>
+`;

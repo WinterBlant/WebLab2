@@ -19,8 +19,8 @@ export default class Service {
             console.error('Get location error' + e);
         }
         return {
-            lat: position.coords.latitude.toFixed(2),
-            lon: position.coords.longitude.toFixed(2)
+            lat: position ? position.coords.latitude.toFixed(2) : '59.97',
+            lon: position ? position.coords.longitude.toFixed(2) : '30.30'
         }
     }
 
@@ -53,7 +53,6 @@ export default class Service {
                     appid: APIkey
                 }
             })
-            console.log(response);
             return await this.parseWeather(response.data, response.status);
         } catch (error) {
             return await this.parseWeather('', error.response.status)
