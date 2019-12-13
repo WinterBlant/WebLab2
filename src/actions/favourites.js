@@ -23,6 +23,7 @@ export function initFavs() {
 export function addNewCity(newCity) {
     return async (dispatch) => {
         if (/^[A-Za-z -]+$/.test(newCity.name)) {
+            dispatch(findNewCity(newCity.name, true))
             const { city, error } = await Service.getWeatherByName(newCity.name);
             if (error !== 200) {
                 if (error !== 404) {
@@ -41,6 +42,7 @@ export function addNewCity(newCity) {
                     localStorage.setItem(city.name, '1');
                 }
             }
+            dispatch(findNewCity(newCity.name, false))
         } else { alert('Wrong city name format'); }
     }
 }

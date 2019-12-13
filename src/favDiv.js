@@ -21,7 +21,7 @@ class FavouriteDiv extends React.Component {
     render() {
         return (
             <>
-                <AddFav onSubmit={this.handleSubmit} />
+                <AddFav onSubmit={this.handleSubmit} isLoading={this.props.isLoading}/>
                 <Favourites cities={this.props.cities} onRemove={this.handleRemove} errors={this.props.errors} isLoading={this.props.isLoading} />
             </>
         );
